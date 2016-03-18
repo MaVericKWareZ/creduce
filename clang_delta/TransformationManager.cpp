@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// Copyright (c) 2012, 2013, 2014, 2015 The University of Utah
+// Copyright (c) 2012, 2013, 2014, 2015, 2016 The University of Utah
 // All rights reserved.
 //
 // This file is distributed under the University of Illinois Open Source
@@ -169,7 +169,7 @@ bool TransformationManager::initializeCompilerInstance(std::string &ErrorMsg)
   ClangInstance->setASTConsumer(
     std::unique_ptr<ASTConsumer>(CurrentTransformationImpl));
   Preprocessor &PP = ClangInstance->getPreprocessor();
-  PP.getBuiltinInfo().InitializeBuiltins(PP.getIdentifierTable(),
+  PP.getBuiltinInfo().initializeBuiltins(PP.getIdentifierTable(),
                                          PP.getLangOpts());
 
   if (!ClangInstance->InitializeSourceManager(FrontendInputFile(SrcFileName, IK))) {
